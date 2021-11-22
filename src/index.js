@@ -8,7 +8,7 @@ import createStore from './helpers/createStore';
 
 const app = express();
 
-const PORT = 4000;
+const PORT = process.env.PORT || 3000;
 
 app.use('/api', proxy('http://react-ssr-api.herokuapp.com', {
     proxyReqOptDecorator(opts) {
@@ -28,7 +28,7 @@ app.get('*', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
  
